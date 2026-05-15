@@ -69,7 +69,7 @@ const MyBookingPage = async () => {
                                             </p>
                                             <p>Address: {booking.country}</p>
                                             <p>Email: {booking.userEmail}</p>
-                                            <p>Price: ৳ {booking.price}</p>
+                                            <p>Price: $ {booking.price}/person</p>
                                         </div>
 
                                         <BookingCancelAlert booking={booking} />

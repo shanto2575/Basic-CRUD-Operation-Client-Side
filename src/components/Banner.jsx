@@ -1,4 +1,5 @@
 import { Separator } from "@heroui/react";
+import Link from "next/link";
 
 const Banner = () => {
     return (
@@ -18,9 +19,9 @@ const Banner = () => {
                         Explore Now
                     </button>
 
-                    <button className="uppercase px-5 py-3 bg-white/50 cursor-pointer">
+                    <Link href={'/destination'}> <button className="uppercase px-5 py-3 bg-white/50 cursor-pointer">
                         View Destination
-                    </button>
+                    </button></Link>
                 </div>
             </div>
 

@@ -1,6 +1,8 @@
+import { Button } from '@heroui/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { FaArrowCircleRight } from 'react-icons/fa'
 import { FiMapPin } from 'react-icons/fi'
 import { GiArrowWings } from 'react-icons/gi'
 import { SlCalender } from 'react-icons/sl'
@@ -11,9 +13,12 @@ const FeaturedPage = async () => {
     // console.log(destination)
     return (
         <div className='w-10/12 mx-auto'>
-            <div className='text-center mt-12 mb-7'>
+            <div className='text-center mt-12'>
                 <h1 className='text-3xl font-bold'>Featured Destinations</h1>
                 <p>Handpicked travel experiences for the adventure seekers</p>
+            </div>
+            <div className='text-end'>
+                <Link href={'/destination'}><Button variant='secondary' className={'rounded'}>All Destination <FaArrowCircleRight /></Button></Link>
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
                 {

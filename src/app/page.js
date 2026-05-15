@@ -1,5 +1,7 @@
 import Banner from "@/components/Banner";
 import FeaturedPage from "@/components/Featured";
+import ReadyToStart from "@/components/ReadyToStart";
+import WhyChooseSection from "@/components/WhyChooseSection";
 import Image from "next/image";
 
 export default function Home() {
@@ -7,6 +9,8 @@ export default function Home() {
     <div>
       <Banner/>
       <FeaturedPage/>
+      <WhyChooseSection/>
+      <ReadyToStart/>
     </div>
   );
 }
