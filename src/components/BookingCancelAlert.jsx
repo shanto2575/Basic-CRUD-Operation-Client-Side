@@ -1,0 +1,51 @@
+"use client";
+import { authClient } from "@/lib/auth-client";
+import { AlertDialog, Button } from "@heroui/react";
+
+export function BookingCancelAlert({ booking }) {
+    // console.log(booking)
+
+    const handleDelete = async (id) => {
+        const {data:TokenData}=await authClient.token()
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                authorization:`Bearer ${TokenData?.token}`
+            }
+        })
+        const data = await res.json()
+        // console.log(data, 'data')
+        window.location.reload()
+    }
+
+    return (
+        <AlertDialog>
+            <Button variant='outline' className={'rounded border-red-400 text-red-500'}>Cancel</Button>            <AlertDialog.Backdrop>
+                <AlertDialog.Container>
+                    <AlertDialog.Dialog className="sm:max-w-[400px]">
+                        <AlertDialog.CloseTrigger />
+                        <AlertDialog.Header>
+                            <AlertDialog.Icon status="danger" />
+                            <AlertDialog.Heading>Delete project permanently?</AlertDialog.Heading>
+                        </AlertDialog.Header>
+                        <AlertDialog.Body>
+                            <p>
+                                This will permanently delete <strong>{booking.destinationName}</strong> and all of its
+                                data. This action cannot be undone.
+                            </p>
+                        </AlertDialog.Body>
+                        <AlertDialog.Footer>
+                            <Button slot="close" variant="tertiary">
+                                Cancel
+                            </Button>
+                            <Button onClick={()=>handleDelete(booking._id)} slot="close" variant="danger">
+                                Confirm Cancel
+                            </Button>
+                        </AlertDialog.Footer>
+                    </AlertDialog.Dialog>
+                </AlertDialog.Container>
+            </AlertDialog.Backdrop>
+        </AlertDialog>
+    );
+}
